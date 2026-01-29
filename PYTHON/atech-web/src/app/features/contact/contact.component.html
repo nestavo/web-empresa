@@ -1,0 +1,144 @@
+<div
+    class="min-h-screen flex align-items-center justify-content-center px-4 py-8 relative overflow-hidden bg-surface-ground">
+    <!-- Background Elements -->
+    <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+        <div class="absolute top-0 right-0 w-30rem h-30rem bg-primary border-circle filter-blur-3xl animate-pulse">
+        </div>
+        <div class="absolute bottom-0 left-0 w-30rem h-30rem bg-purple-600 border-circle filter-blur-3xl animate-pulse">
+        </div>
+    </div>
+
+    <div class="grid w-full max-w-7xl relative z-2">
+        <!-- Contact Info Side -->
+        <div class="col-12 md:col-5 p-0 md:pr-6 mb-6 md:mb-0 text-white">
+            <h2 class="text-5xl font-black mb-4">Hablemos de tu Proyecto</h2>
+            <p class="text-xl text-gray-400 mb-6 line-height-3">
+                ¿Tienes una idea disruptiva? Estamos listos para llevar tu negocio al siguiente nivel tecnológico.
+            </p>
+
+            <div class="flex flex-column gap-4">
+                <div
+                    class="flex align-items-center gap-4 surface-card p-4 border-round-2xl shadow-4 hover-scale cursor-pointer border-1 surface-border">
+                    <span
+                        class="w-4rem h-4rem border-circle bg-primary-900/30 flex align-items-center justify-content-center text-primary text-2xl">
+                        <i class="pi pi-map-marker"></i>
+                    </span>
+                    <div>
+                        <div class="font-bold text-lg mb-1">Ubicación</div>
+                        <div class="text-gray-400">Madrid, España</div>
+                    </div>
+                </div>
+                <div
+                    class="flex align-items-center gap-4 surface-card p-4 border-round-2xl shadow-4 hover-scale cursor-pointer border-1 surface-border">
+                    <span
+                        class="w-4rem h-4rem border-circle bg-primary-900/30 flex align-items-center justify-content-center text-primary text-2xl">
+                        <i class="pi pi-envelope"></i>
+                    </span>
+                    <div>
+                        <div class="font-bold text-lg mb-1">Email</div>
+                        <div class="text-gray-400">contacto&#64;atech.com</div>
+                    </div>
+                </div>
+                <!-- WhatsApp -->
+                <div
+                    class="flex align-items-center gap-4 surface-card p-4 border-round-2xl shadow-4 hover-scale cursor-pointer border-1 surface-border">
+                    <span
+                        class="w-4rem h-4rem border-circle bg-green-900/30 flex align-items-center justify-content-center text-green-500 text-2xl">
+                        <i class="pi pi-whatsapp"></i>
+                    </span>
+                    <div>
+                        <div class="font-bold text-lg mb-1">WhatsApp</div>
+                        <div class="text-gray-400">+34 600 000 000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="col-12 md:col-7">
+            <div class="surface-card p-6 shadow-8 border-round-3xl border-1 surface-border relative overflow-hidden">
+                <!-- Discount Badge -->
+                <div class="absolute top-0 right-0 m-4">
+                    <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 border-round">🎁 20% OFF</span>
+                </div>
+
+                <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="flex flex-column gap-4">
+                    <div class="grid">
+                        <div class="col-12 md:col-6">
+                            <label for="name" class="block font-medium mb-2 text-gray-300">Nombre Completo <span
+                                    class="text-red-500">*</span></label>
+                            <div class="p-input-icon-left w-full">
+                                <i class="pi pi-user"></i>
+                                <input pInputText id="name" formControlName="name" placeholder="Tu nombre"
+                                    class="w-full bg-gray-900 border-none text-white p-3 border-round-xl">
+                            </div>
+                            <small *ngIf="isFieldInvalid('name')" class="text-red-400 block mt-1"><i
+                                    class="pi pi-times-circle"></i> Requerido</small>
+                        </div>
+                        <div class="col-12 md:col-6">
+                            <label for="email" class="block font-medium mb-2 text-gray-300">Email Corporativo <span
+                                    class="text-red-500">*</span></label>
+                            <div class="p-input-icon-left w-full">
+                                <i class="pi pi-envelope"></i>
+                                <input pInputText id="email" formControlName="email" placeholder="tucorreo@empresa.com"
+                                    class="w-full bg-gray-900 border-none text-white p-3 border-round-xl">
+                            </div>
+                            <small *ngIf="isFieldInvalid('email')" class="text-red-400 block mt-1"><i
+                                    class="pi pi-times-circle"></i> Inválido</small>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block font-medium mb-2 text-gray-300">Teléfono</label>
+                        <div class="p-input-icon-left w-full">
+                            <i class="pi pi-phone"></i>
+                            <input pInputText id="phone" formControlName="phone" placeholder="+34 600..."
+                                class="w-full bg-gray-900 border-none text-white p-3 border-round-xl">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="service" class="block font-medium mb-2 text-gray-300">Servicio de Interés</label>
+                        <select formControlName="service"
+                            class="w-full p-3 border-round-xl bg-gray-900 text-white border-none cursor-pointer">
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="web">Desarrollo Web</option>
+                            <option value="ai">Inteligencia Artificial</option>
+                            <option value="automation">Automatización</option>
+                            <option value="consulting">Consultoría</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block font-medium mb-2 text-gray-300">Detalles del Proyecto</label>
+                        <textarea pInputTextarea id="message" formControlName="message" rows="4"
+                            placeholder="Cuéntanos más..."
+                            class="w-full bg-gray-900 border-none text-white p-3 border-round-xl"></textarea>
+                        <small *ngIf="isFieldInvalid('message')" class="text-red-400 block mt-1"><i
+                                class="pi pi-times-circle"></i> Cuéntanos un poco más (min 10 caracteres)</small>
+                    </div>
+
+                    <div class="flex align-items-center gap-2">
+                        <p-checkbox [binary]="true" inputId="terms"></p-checkbox>
+                        <label for="terms" class="text-sm text-gray-400">Acepto la política de privacidad</label>
+                    </div>
+
+                    <button pButton pRipple type="submit" label="Enviar Solicitud" icon="pi pi-send"
+                        class="w-full p-button-lg bg-gradient-primary border-none shadow-6 mt-2"
+                        [loading]="loading"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="¡Solicitud Enviada!" [(visible)]="showSuccessDialog" [modal]="true" [style]="{width: '400px'}"
+    [draggable]="false" [resizable]="false">
+    <div class="flex flex-column align-items-center text-center p-4">
+        <i class="pi pi-check-circle text-6xl text-green-500 mb-4 animate-bounce"></i>
+        <h3 class="m-0 mb-2">¡Gracias!</h3>
+        <p class="m-0 line-height-3 text-gray-400">Hemos recibido tu solicitud. Un experto te contactará en breve.</p>
+        <button pButton label="Volver al Inicio" icon="pi pi-home" (click)="showSuccessDialog = false"
+            class="mt-4 p-button-outlined p-button-rounded"></button>
+    </div>
+</p-dialog>

@@ -1,0 +1,50 @@
+.service-card {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px) rotateX(2deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.bg-glass {
+    background: rgba(31, 41, 55, 0.4);
+    backdrop-filter: blur(12px);
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.service-card:hover .bg-glass {
+    background: rgba(31, 41, 55, 0.6);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.hover-rotate {
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.service-card:hover .hover-rotate {
+    transform: rotateY(180deg);
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s ease-out backwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Gradient Text Utility if not global */
+.bg-gradient-to-r {
+    background: linear-gradient(to right, #4ade80, #3b82f6);
+}

@@ -1,0 +1,17 @@
+<div class="layout-wrapper relative min-h-screen flex flex-column">
+  <app-header></app-header>
+
+  <div class="layout-content flex-grow-1">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!-- Floating Global Elements -->
+  <app-chatbot-widget></app-chatbot-widget>
+
+  <a href="https://wa.me/34600000000" target="_blank" class="float-btn whatsapp-btn whatsapp-pulse"
+    title="Chatea con nosotros">
+    <i class="pi pi-whatsapp"></i>
+  </a>
+
+  <app-footer></app-footer>
+</div>

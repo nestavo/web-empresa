@@ -1,0 +1,57 @@
+<div class="fixed top-0 left-0 w-full z-5 animate-fade-in-down"
+    [ngClass]="{'bg-glass shadow-4': isScrolled, 'bg-transparent': !isScrolled}" style="transition: all 0.3s ease;">
+    <div class="container flex justify-content-between align-items-center h-5rem px-4 md:px-8">
+
+        <!-- Logo -->
+        <a routerLink="/" class="no-underline flex align-items-center gap-2 cursor-pointer">
+            <span
+                class="w-2.5rem h-2.5rem bg-gradient-primary border-circle flex align-items-center justify-content-center text-white font-bold text-xl">A</span>
+            <span class="text-2xl font-bold text-white tracking-tight">Atech</span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex align-items-center gap-6">
+            <a routerLink="/" routerLinkActive="text-primary font-bold" [routerLinkActiveOptions]="{exact: true}"
+                class="text-gray-200 hover:text-white transition-colors no-underline text-sm font-medium">Inicio</a>
+            <a routerLink="/services" routerLinkActive="text-primary font-bold"
+                class="text-gray-200 hover:text-white transition-colors no-underline text-sm font-medium">Servicios</a>
+            <a routerLink="/portfolio" routerLinkActive="text-primary font-bold"
+                class="text-gray-200 hover:text-white transition-colors no-underline text-sm font-medium">Casos</a>
+            <a routerLink="/about" routerLinkActive="text-primary font-bold"
+                class="text-gray-200 hover:text-white transition-colors no-underline text-sm font-medium">Nosotros</a>
+            <a routerLink="/contact" routerLinkActive="text-primary font-bold"
+                class="text-gray-200 hover:text-white transition-colors no-underline text-sm font-medium">Contacto</a>
+        </div>
+
+        <!-- CTA & Mobile Toggle -->
+        <div class="flex align-items-center gap-3">
+            <button pButton label="Solicitar Demo"
+                class="hidden md:inline-flex p-button-sm p-button-rounded bg-gradient-primary border-none font-bold"
+                routerLink="/contact"></button>
+            <button pButton icon="pi pi-bars" class="md:hidden p-button-rounded p-button-text text-white"
+                (click)="displayMobileMenu = true"></button>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile Sidebar -->
+<p-sidebar [(visible)]="displayMobileMenu" position="right" styleClass="w-full sm:w-20rem bg-gray-900">
+    <div class="flex flex-column gap-4 p-4">
+        <div class="text-center mb-4">
+            <span class="text-2xl font-bold text-white">Menú</span>
+        </div>
+        <a routerLink="/" (click)="displayMobileMenu=false"
+            class="text-xl text-white no-underline p-3 surface-card border-round hover:bg-gray-800 transition-colors block">Inicio</a>
+        <a routerLink="/services" (click)="displayMobileMenu=false"
+            class="text-xl text-white no-underline p-3 surface-card border-round hover:bg-gray-800 transition-colors block">Servicios</a>
+        <a routerLink="/portfolio" (click)="displayMobileMenu=false"
+            class="text-xl text-white no-underline p-3 surface-card border-round hover:bg-gray-800 transition-colors block">Casos
+            de Éxito</a>
+        <a routerLink="/about" (click)="displayMobileMenu=false"
+            class="text-xl text-white no-underline p-3 surface-card border-round hover:bg-gray-800 transition-colors block">Nosotros</a>
+        <a routerLink="/contact" (click)="displayMobileMenu=false"
+            class="text-xl text-white no-underline p-3 surface-card border-round hover:bg-gray-800 transition-colors block">Contacto</a>
+        <button pButton label="Solicitar Demo Gratis" class="w-full mt-4 p-button-lg bg-gradient-primary border-none"
+            (click)="displayMobileMenu=false" [routerLink]="['/contact']"></button>
+    </div>
+</p-sidebar>
